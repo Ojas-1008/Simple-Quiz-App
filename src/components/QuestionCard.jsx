@@ -1,54 +1,66 @@
-function QuestionCard({
-    question,
-    selectedAnswer,
-    onOptionSelect,
-    isSubmitted,
-    onSubmit,
-    correctAnswer,
-    onNext,
-    totalQuestions,
-    progress,
-    currentIndex
-}) {
+// src/components/QuestionCard.jsx
+function QuestionCard({ question, selectedAnswer, onOptionSelect, isSubmitted, onSubmit, correctAnswer, onNext, totalQuestions, progress, currentIndex }) {
     const isLastIndex = currentIndex === totalQuestions - 1;
 
     return (
-        <div>
-            <div className="progress-container">
-                <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+        <div className="question-container">
+            {/* Progress Section */}
+            <div className="progress-section">
+                <div className="progress-info">
+                    <span className="question-count">Question {currentIndex + 1} of {totalQuestions}</span>
+                    <span className="percentage">{Math.round(progress)}%</span>
+                </div>
+                <div className="progress-track">
+                    <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+                </div>
             </div>
 
-            <p>Question {currentIndex + 1} of {totalQuestions}</p>
-            <h2>{question.question}</h2>
+            {/* Card Content */}
+            <div className="card">
+                <h1 className="question-text">{question.question}</h1>
 
-            {question.options.map((option) => {
-                const isSelected = selectedAnswer === option;
-                const isCorrect = option === correctAnswer && isSubmitted;
-                const isWrong = option !== correctAnswer && isSelected && isSubmitted;
+                <div className="options-list">
+                    {question.options.map((option) => {
+                        const isSelected = selectedAnswer === option;
+                        const isCorrect = isSubmitted && option === correctAnswer;
+                        const isWrong = isSubmitted && isSelected && option !== correctAnswer;
+                        const isDisabled = isSubmitted && !isSelected && !isCorrect;
 
-                return (
-                    <button
-                        key={option}
-                        onClick={() => onOptionSelect(option)}
-                        className={`option ${isSelected ? 'selected' : ''} ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}`}
-                        disabled={isSubmitted}
-                    >
-                        {option}
-                    </button>
-                );
-            })}
+                        return (
+                            <button
+                                key={option}
+                                onClick={() => onOptionSelect(option)}
+                                disabled={isSubmitted}
+                                className={`option-card ${isSelected ? 'selected' : ''} ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''} ${isDisabled ? 'disabled' : ''}`}
+                            >
+                                <div className="option-left">
+                                    <div className="option-indicator">
+                                        {isCorrect && <span className="material-symbols-outlined icon-small">check</span>}
+                                        {isWrong && <span className="material-symbols-outlined icon-small">close</span>}
+                                    </div>
+                                    <span className="option-label">{option}</span>
+                                </div>
+                                {isCorrect && <span className="status-badge">Correct Answer</span>}
+                                {isWrong && <span className="status-badge">Your Choice</span>}
+                            </button>
+                        );
+                    })}
+                </div>
 
-            {selectedAnswer !== '' && (
-                <button onClick={onSubmit} disabled={isSubmitted}>
-                    Submit
-                </button>
-            )}
-
-            {isSubmitted && (
-                <button onClick={onNext}>
-                    {isLastIndex ? 'Finish Quiz' : 'Next'}
-                </button>
-            )}
+                {/* Action Button */}
+                <div className="action-area">
+                    {!isSubmitted ? (
+                        <button className="primary-btn" onClick={onSubmit} disabled={!selectedAnswer}>
+                            Submit Answer
+                        </button>
+                    ) : (
+                        <button className="primary-btn accent" onClick={onNext}>
+                            {isLastIndex ? 'Finish Quiz' : 'Next Question'}
+                            <span className="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
