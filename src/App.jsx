@@ -44,6 +44,18 @@ function App() {
     }
   }
 
+  function handleReset() {
+    setAnswers([]);
+    setCurrentIndex(0);
+    setIsFinished(false);
+    setIsSubmitted(false);
+    setSelectedAnswer("");
+  }
+
+  const score = answers.filter((answer) => answer.isCorrect).length;
+
+  const scorePercentage = questions.length === 0 ? 0 : (score / questions.length) * 100;
+
   return (
     <div className="app-container">
       <header className="top-nav">
@@ -78,7 +90,7 @@ function App() {
             currentIndex={currentIndex}
           />
         ) : (
-          <ResultScreen />
+          <ResultScreen score={score} total={questions.length} scorePercentage={scorePercentage} onReset={handleReset} />
         )}
       </main>
     </div>

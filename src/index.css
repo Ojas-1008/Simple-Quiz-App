@@ -1,28 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 :root {
-    --bg-surface: #f7f9fb;
-    --on-surface: #2a3439;
-    --primary: #515f74;
-    --primary-container: #d5e3fd;
-    --on-primary-container: #455367;
-    --secondary-container: #d3e4fe;
-    --on-secondary-container: #435368;
+    --bg-surface: #fcfcfd;
+    --on-surface: #101828;
+    
+    --primary: #6941C6;
+    --primary-hover: #53389E;
+    --primary-light: #F9F5FF;
+    --primary-container: #E9D7FE;
+    --on-primary-container: #6941C6;
+    
+    --accent: #FF5A5F;
+    
+    --success: #079455;
+    --success-container: #ECFDF3;
+    --on-success-container: #067647;
+    --success-outline: #ABEFC6;
 
-    --success-container: #e6f4ea;
-    --on-success-container: #1e8e3e;
-    --success-outline: #81c995;
+    --error: #D92D20;
+    --error-container: #FEF3F2;
+    --on-error-container: #B42318;
+    --error-outline: #FDA29B;
 
-    --error-container: #fce8e6;
-    --on-error-container: #d93025;
-    --error-outline: #f28b82;
-
-    --outline-variant: rgba(169, 180, 185, 0.2);
-    --surface-container-low: #f0f4f7;
+    --outline-variant: #EAECF0;
+    --surface-container-low: #F9FAFB;
     --white: #ffffff;
+    
+    --shadow-sm: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    --shadow-md: 0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
+    --shadow-lg: 0px 20px 24px -4px rgba(16, 24, 40, 0.08), 0px 8px 8px -4px rgba(16, 24, 40, 0.03);
 
-    --font-headline: 'Manrope', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-headline: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
 * {
@@ -37,4 +46,9 @@ body {
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: var(--font-headline);
 }
