@@ -1,0 +1,35 @@
+Project: Simple Quiz App (Mindscape)
+
+1. Runtime Environment:
+   - Node.js (Version 18.0.0 or higher recommended)
+   - A modern web browser (Chrome, Firefox, Edge, Safari)
+
+2. Package Manager:
+   - pnpm (Recommended, as indicated by pnpm-lock.yaml)
+   - npm or yarn (Alternative)
+
+3. Core Dependencies:
+   - react (^19.2.4)
+   - react-dom (^19.2.4)
+
+4. Development Dependencies:
+   - vite (^8.0.1): Build tool and development server
+   - eslint (^9.39.4): Pluggable JavaScript linter
+   - @vitejs/plugin-react (^6.0.1): Vite plugin for React support
+   - @eslint/js, @types/react, @types/react-dom, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals
+
+5. External Assets & Integrations:
+   - Google Fonts: 'Plus Jakarta Sans', 'Outfit'
+   - Material Symbols: 'Material Symbols Outlined'
+   - (All external assets are imported via CSS @import in src/index.css)
+
+6. Project Structure:
+   - src/components: Reusable UI components (QuestionCard, ResultScreen)
+   - src/data: Quiz content (questions.js)
+   - src/App.jsx: Main application logic
+   - src/index.css & src/App.css: Global and component-specific styling
+
+To run the project:
+1. Install dependencies: pnpm install
+2. Start development server: pnpm run dev
+3. Build for production: pnpm run build
